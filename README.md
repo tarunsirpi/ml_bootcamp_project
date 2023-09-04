@@ -7,7 +7,7 @@ conda create -p env_name python=3.8 -y
 ```
 source activate ./env_name
 ```
-# command prompt --? activate env
+# command prompt --> activate env
 ```
 conda activate <absolute path of env folder>
 ```
