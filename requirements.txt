@@ -1,5 +1,7 @@
 pandas
 numpy==1.23
+matplotlib
+seaborn
 flask
 ipykernel
 typing
