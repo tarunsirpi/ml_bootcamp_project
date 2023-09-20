@@ -5,5 +5,7 @@ seaborn
 flask
 ipykernel
 typing
+requests
+sklearn
 
 -e .
