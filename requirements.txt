@@ -6,6 +6,6 @@ flask
 ipykernel
 typing
 requests
-sklearn
+scikit-learn
 
 -e .
