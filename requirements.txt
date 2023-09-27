@@ -7,5 +7,6 @@ ipykernel
 typing
 requests
 scikit-learn
+dataclasses
 
 -e .
