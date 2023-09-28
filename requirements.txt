@@ -8,5 +8,6 @@ typing
 requests
 scikit-learn
 dataclasses
+datetime
 
 -e .
