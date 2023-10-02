@@ -27,7 +27,7 @@ class DataIngestion():
       df = pd.read_csv(os.path.join("notebooks/data/cleandata.csv"))
       logging.info("Raw date reading completed")
 
-      os.makedir(os.path.dirname(self.injestion_config.raw_data_path), exist_ok = True)
+      os.makedirs(os.path.dirname(self.injestion_config.raw_data_path), exist_ok = True)
 
       df.to_csv(self.injestion_config.raw_data_path)
 
@@ -42,3 +42,8 @@ class DataIngestion():
 
     except Exception as ex:
       raise Exception
+    
+
+if __name__ == "__main__":
+  data_ingestion = DataIngestion()
+  data_ingestion.initiate_data_ingestion()
