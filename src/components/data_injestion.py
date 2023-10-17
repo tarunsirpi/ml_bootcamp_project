@@ -11,9 +11,9 @@ from src.exception import CustomException
 
 
 class DataIngestionConfig():
-  train_data_path = os.path.join("artifact", "train.csv")
-  test_data_path = os.path.join("artifact", "test.csv")
-  raw_data_path = os.path.join("artifact", "raw.csv")
+  train_data_path = os.path.join("artifacts", "train.csv")
+  test_data_path = os.path.join("artifacts", "test.csv")
+  raw_data_path = os.path.join("artifacts", "raw.csv")
 
 
 
@@ -24,12 +24,11 @@ class DataIngestion():
   def initiate_data_ingestion(self):
     logging.info("Starting data ingestion")
     try:
-      df = pd.read_csv(os.path.join("notebooks/data/cleandata.csv"))
-      logging.info("Raw date reading completed")
+      df = pd.read_csv(os.path.join("notebooks", "data", "cleandata.csv"))
+      logging.info("Raw data reading completed")
+      os.makedirs(os.path.dirname(self.ingestion_config.raw_data_path), exist_ok = True)
 
-      os.makedirs(os.path.dirname(self.injestion_config.raw_data_path), exist_ok = True)
-
-      df.to_csv(self.injestion_config.raw_data_path)
+      df.to_csv(self.ingestion_config.raw_data_path)
 
       train_set, test_set = train_test_split(df,test_size=0.25, random_state=42)
       logging.info("train and test split complete")
@@ -40,8 +39,8 @@ class DataIngestion():
 
       return(self.ingestion_config.train_data_path, self.ingestion_config.test_data_path)
 
-    except Exception as ex:
-      raise Exception
+    except Exception as e:
+      raise CustomException(e, sys)
     
 
 if __name__ == "__main__":
