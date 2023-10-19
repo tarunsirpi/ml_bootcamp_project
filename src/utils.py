@@ -29,7 +29,7 @@ def save_model(file_path, obj):
     logging.info("Exception in save_model utils function")
     raise CustomException(e,sys)
   
-def evaluate_model(X_train, X_test, y_train, y_test, models:dict ):
+def evaluate_model(X_train, y_train, X_test, y_test, models:dict ):
   try:
     report = {}
     for i in models.keys():

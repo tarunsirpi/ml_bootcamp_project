@@ -6,7 +6,7 @@ from src.logger import logging
 
 from src.utils import save_model
 from src.utils import evaluate_model
-from src.components.data_ingestion import DataIngestion
+from src.components.data_injestion import DataIngestion
 from src.components.data_transformation import DataTransformation
 
 from dataclasses import dataclass
@@ -37,18 +37,16 @@ class ModelTrainer:
       'Lasso':Lasso(),
       'Ridge':Ridge(),
       'Elasticnet':ElasticNet()
-  }
+      }
       
-      model_report:dict=evaluate_model(X_train,y_train,X_test,y_test,models)
+      model_report:dict=evaluate_model(X_train, y_train, X_test, y_test, models)
       print(model_report)
       print('\n====================================================================================\n')
       logging.info(f'Model Report : {model_report}')
 
       best_model_score = max(sorted(model_report.values()))
 
-      best_model_name = list(model_report.keys())[
-          list(model_report.values()).index(best_model_score)
-      ]
+      best_model_name = list(model_report.keys())[list(model_report.values()).index(best_model_score)]
       
       best_model = models[best_model_name]
 
@@ -61,17 +59,16 @@ class ModelTrainer:
             obj=best_model
       )
     
-
     except Exception as e:
       logging.info('Exception occured at Model Training')
       raise CustomException(e,sys)
         
 if __name__ == '__main__':
-  obj=DataIngestion()
+  obj = DataIngestion()
   train_data_path,test_data_path=obj.initiate_data_ingestion()
 
   data_transformation = DataTransformation()
-  train_arr,test_arr,_=data_transformation.initaite_data_transformation(train_data_path,test_data_path)
+  train_arr,test_arr,_=data_transformation.initaite_data_transformation(train_data_path, test_data_path)
 
   model_trainer=ModelTrainer()
   model_trainer.initate_model_training(train_arr,test_arr)
