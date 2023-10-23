@@ -89,6 +89,12 @@ class DataTransformation:
       input_feature_train_arr=preprocessing_obj.fit_transform(input_feature_train_df)
       input_feature_test_arr=preprocessing_obj.transform(input_feature_test_df)
 
+      print("#"*30)
+      print(input_feature_train_df)
+      print("#"*30)
+
+      print(input_feature_train_arr[0])
+
       logging.info("Applying preprocessing object on training and testing datasets.")
       
 
@@ -101,6 +107,7 @@ class DataTransformation:
           obj=preprocessing_obj
 
       )
+      print(train_arr[0])
       logging.info('Preprocessor pickle file saved')
 
       return (
