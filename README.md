@@ -35,3 +35,6 @@ pip install -r requirements.txt
 add secrets to Github actions
 
 ```
+
+Link for the web app deployed:
+https://pjfmqy6sj3.us-east-1.awsapprunner.com/predict
