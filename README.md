@@ -30,3 +30,8 @@ or
 ```
 pip install -r requirements.txt
 ```
+
+```
+add secrets to Github actions
+
+```
